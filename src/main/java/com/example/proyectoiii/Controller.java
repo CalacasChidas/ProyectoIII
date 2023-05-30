@@ -1,11 +1,15 @@
 package com.example.proyectoiii;
+import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import jssc.*;
 
 public class Controller {
 
@@ -17,6 +21,10 @@ public class Controller {
     private static List<Node> nodes;
     private static List<Edge> edges;
 
+    @FXML
+    public void initialize() {
+        //comm();
+    }
 
     /**
      * Genera la cantidad de nodos aleatorios entres 5 y 10, y en una posicion aleatoria de la ventana.
@@ -80,5 +88,34 @@ public class Controller {
         }
     }
 
-
+    public void comm() {
+        SerialPort puerto = new SerialPort("COM3");
+        try {
+            puerto.openPort();
+            puerto.setParams(SerialPort.BAUDRATE_19200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+            puerto.addEventListener((SerialPortEvent event) -> {
+                if (event.isRXCHAR()) {
+                    try {
+                        String x = puerto.readString();
+                        if (x.equals("U")) {
+                            System.out.println("UP");
+                        }
+                        if (x.equals("D")) {
+                            System.out.println("DOWN");
+                        }
+                        if (x.equals("L")) {
+                            System.out.println("LEFT");
+                        }
+                        if (x.equals("R")) {
+                            System.out.println("RIGHT");
+                        }
+                    } catch (SerialPortException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (SerialPortException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
