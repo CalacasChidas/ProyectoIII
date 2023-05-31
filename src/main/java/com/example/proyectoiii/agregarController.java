@@ -1,7 +1,9 @@
 package com.example.proyectoiii;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +14,14 @@ public class agregarController {
     private ChoiceBox<String> tipos;
     @FXML
     private ChoiceBox <String> ordenarPor;
+    @FXML
+    private Label velocidadLabel;
+    @FXML
+    private Label eficienciaLabel;
+    @FXML
+    private Label fortalezaLabel;
 
-    Avion[] avionesList = new Avion[2];
+    Avion[] avionesList = new Avion[3];
     List<String> tiposAviones = new ArrayList<>();
 
     public void loadItems(){
@@ -36,6 +44,22 @@ public class agregarController {
         }else {
             System.out.println("No se ha seleccionado como se desea ordenar");
         }
+    }
+
+    public void showInfo(){
+        if (tipos.getValue() != null) {
+            for (int i = 0; i < avionesList.length; i++) {
+                if (tipos.getValue().equals(avionesList[i].getNombre())) {
+                    velocidadLabel.setText(String.valueOf(avionesList[i].getVelocidad()));
+                    eficienciaLabel.setText(String.valueOf(avionesList[i].getEficiencia()));
+                    fortalezaLabel.setText(String.valueOf(avionesList[i].getFortaleza()));
+                    break;
+                }
+            }
+        }
+    }
+    public void agregarAvion(){
+
     }
 
 }

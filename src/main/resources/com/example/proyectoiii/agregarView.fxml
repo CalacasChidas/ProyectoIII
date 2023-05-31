@@ -58,5 +58,10 @@
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Button>
+      <Button fx:id="infoButton" layoutX="71.0" layoutY="129.0" mnemonicParsing="false" onAction="#showInfo" text="Info">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
