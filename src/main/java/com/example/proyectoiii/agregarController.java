@@ -36,11 +36,14 @@ public class agregarController {
     }
 
     public void ordenar(){
-        if (ordenarPor.getValue().equals("Velocidad")) {
-            //InsertionSort
-
-        }if (ordenarPor.getValue().equals("Eficiencia")){
-            //ShellSort
+        if (ordenarPor.getValue() != null){
+            if (ordenarPor.getValue().equals("Velocidad")) {
+                System.out.println("Ordenado por velocidad");
+                //InsertionSort
+            }else {
+                System.out.println("Ordenado por eficiencia");
+                //ShellSort
+            }
         }else {
             System.out.println("No se ha seleccionado como se desea ordenar");
         }

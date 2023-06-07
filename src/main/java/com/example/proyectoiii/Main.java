@@ -1,10 +1,16 @@
 package com.example.proyectoiii;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -12,6 +18,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.example.proyectoiii.Controller.drawGraph;
 import static com.example.proyectoiii.Controller.generateGraph;
@@ -21,6 +30,7 @@ public class Main extends Application {
     static PrintWriter out;
     private Socket client;
     private boolean done;
+    private Timer timer;
 
     @Override
     public void start(Stage primaryStage) throws IOException{
@@ -40,6 +50,8 @@ public class Main extends Application {
         generateGraph();
         drawGraph(root);
 
+
+        /*
         Button button = new Button("Agregar avión");
         button.setLayoutX(20);
         button.setLayoutY(20);
@@ -52,9 +64,67 @@ public class Main extends Application {
         });
         root.getChildren().add(button);
 
+         */
+
         primaryStage.show();
+
+        startTimer();
+    }
+    private void startTimer() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> notificacionAgregar(null));
+            }
+        }, 0, 60000);
     }
 
+    private void notificacionAgregar(Stage primaryStage) {
+        Alert notification = new Alert(Alert.AlertType.INFORMATION);
+        notification.setTitle("Notificación");
+        notification.setHeaderText(null);
+        notification.setContentText("Ya es momento de construir un nuevo avión :)");
+
+        ButtonType closeButton = new ButtonType("Agregar avión");
+        notification.getButtonTypes().setAll(closeButton);
+
+        Optional<ButtonType> result = notification.showAndWait();
+        if (result.isPresent() && result.get() == closeButton) {
+            openAgregar(primaryStage);
+        }
+    }
+    private void openAgregar(Stage primaryStage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("agregarView.fxml"));
+            Parent root = loader.load();
+
+            agregarController controller = loader.getController();
+            controller.loadItems();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Agregar aviones");
+
+            if (primaryStage != null) {
+                stage.initOwner(primaryStage);
+                stage.initModality(Modality.WINDOW_MODAL);
+            }
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void stop() {
+        if (timer != null) {
+            timer.cancel();
+        }
+    }
+
+
+    /*
     private void agregar () throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("agregarView.fxml"));
         Parent root = loader.load();
@@ -67,6 +137,8 @@ public class Main extends Application {
         stage.setTitle("Agregar aviones");
         stage.show();
     }
+
+     */
     public void shutdown(){
         done = true;
         try{
