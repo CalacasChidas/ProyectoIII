@@ -2,7 +2,7 @@ package com.example.proyectoiii;
 
 public class InsertionSort {
 
-    private static void insertionSort(int[] list) {
+    /*static void insertionSort(int[] list) {
         for (int i = 1; i < list.length; i++) {
 
             int currentValue = list[i];
@@ -13,6 +13,21 @@ public class InsertionSort {
                 j--;
             }
             list[j + 1] = currentValue;
+        }
+    }*/
+
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+
+            // Desplazar los elementos mayores que key hacia la derecha
+            while (j >= 0 && arr[j] < key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
         }
     }
 }
