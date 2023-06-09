@@ -1,5 +1,7 @@
 package com.example.proyectoiii;
 
+import javafx.scene.shape.Shape;
+
 public class Edge {
     private Node startNode;
     private Node endNode;

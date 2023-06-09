@@ -18,8 +18,11 @@ public class Controller {
     private static final int NODE_RADIUS = 15;
     private static final int WEIGHT_LOW = 1;
     private static final int WEIGHT_HIGH = 10;
-    private static List<Node> nodes;
-    private static List<Edge> edges;
+    public static List<Node> nodes;
+    public static List<Edge> edges;
+    private static List<Node> aeropuertoNodes;
+    private static List<Node> portaavionesNodes;
+
 
     @FXML
     public void initialize() {
@@ -33,6 +36,8 @@ public class Controller {
     static void generateGraph() {
         nodes = new ArrayList<>();
         edges = new ArrayList<>();
+        aeropuertoNodes = new ArrayList<>();
+        portaavionesNodes = new ArrayList<>();
 
         Random random = new Random();
 
@@ -42,7 +47,8 @@ public class Controller {
             int x = random.nextInt(WIDTH - NODE_RADIUS * 2) + NODE_RADIUS;
             int y = random.nextInt(HEIGHT - NODE_RADIUS * 2) + NODE_RADIUS;
             Node.NodeType type = random.nextBoolean() ? Node.NodeType.Aeropuerto : Node.NodeType.Portaaviones;
-            nodes.add(new Node(i, x, y, type));
+            Node node = new Node(i, x, y, type);
+            nodes.add(node);
         }
 
         for (int i = 0; i < numNodes; i++) {

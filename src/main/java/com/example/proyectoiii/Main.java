@@ -31,6 +31,7 @@ public class Main extends Application {
     private Socket client;
     private boolean done;
     private Timer timer;
+    public static Pane root;
 
     @Override
     public void start(Stage primaryStage) throws IOException{
@@ -41,7 +42,7 @@ public class Main extends Application {
         Thread t = new Thread(inHandler);
         t.start();
 
-        Pane root = new Pane();
+        root = new Pane();
 
 
         primaryStage.setScene(new Scene(root));
