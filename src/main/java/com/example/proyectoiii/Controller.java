@@ -26,7 +26,10 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        //comm();
+    }
+
+    public Controller() {
+        this.initialize();
     }
 
     /**
@@ -94,15 +97,19 @@ public class Controller {
         }
     }
 
-    public void comm() {
+    /*public void comm() {
         SerialPort puerto = new SerialPort("COM3");
         try {
             puerto.openPort();
+            System.out.println("com");
             puerto.setParams(SerialPort.BAUDRATE_19200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             puerto.addEventListener((SerialPortEvent event) -> {
                 if (event.isRXCHAR()) {
                     try {
                         String x = puerto.readString();
+                        if (x.equals("X")) {
+                            System.out.println("SH");
+                        }
                         if (x.equals("U")) {
                             System.out.println("UP");
                         }
@@ -123,5 +130,5 @@ public class Controller {
         } catch (SerialPortException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }

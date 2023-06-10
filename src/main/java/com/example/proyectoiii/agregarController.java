@@ -13,6 +13,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortException;
 
 import java.util.*;
 
@@ -45,7 +48,6 @@ public class agregarController {
 
     InsertionSort insertionSort = new InsertionSort();
     ShellSort shellSort = new ShellSort();
-
 
     public void loadItems() {
         tiposAviones.add("F18 SuperHornett");
@@ -203,5 +205,6 @@ public class agregarController {
         line.setEndY(endY);
         return line;
     }
+
 
 }

@@ -12,6 +12,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -174,5 +177,40 @@ public class Main extends Application {
     }
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void comm() {
+        SerialPort puerto = new SerialPort("COM3");
+        try {
+            puerto.openPort();
+            System.out.println("com");
+            puerto.setParams(SerialPort.BAUDRATE_19200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+            puerto.addEventListener((SerialPortEvent event) -> {
+                if (event.isRXCHAR()) {
+                    try {
+                        String x = puerto.readString();
+                        if (x.equals("X")) {
+                            System.out.println("SH");
+                        }
+                        if (x.equals("U")) {
+                            System.out.println("UP");
+                        }
+                        if (x.equals("D")) {
+                            System.out.println("DOWN");
+                        }
+                        if (x.equals("L")) {
+                            System.out.println("LEFT");
+                        }
+                        if (x.equals("R")) {
+                            System.out.println("RIGHT");
+                        }
+                    } catch (SerialPortException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (SerialPortException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
