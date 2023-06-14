@@ -31,6 +31,18 @@ void setup() {
 void loop() {
   lights();
   checkButton();
+
+  if (Serial.available() > 0) {
+    String msg = Serial.readString();
+    if(msg.compareTo("B")==0){
+      tone(BUZZER, 650, 100);
+      delay(100);
+      tone(BUZZER, 450, 100);
+      delay(100);
+      tone(BUZZER, 250, 100);
+      delay(100);
+    }
+  }
 /*
   int estado_boton2;
   estado_boton2 = digitalRead(pin_boton2);
@@ -98,12 +110,6 @@ void checkButton() {
     if (led == 4) {
       delay(50);
       Serial.println("X");
-      delay(2000);
-      tone(BUZZER, 1000, 100);
-      delay(200);
-      tone(BUZZER, 1000, 100);
-      delay(200);
-      tone(BUZZER, 1000, 100);
     }
     delay(led_on_duration);
     digitalWrite(led, LOW);

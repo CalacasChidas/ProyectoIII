@@ -36,6 +36,8 @@ public class Main extends Application {
     private Timer timer;
     public static Pane root;
 
+    SerialPort puerto = new SerialPort("COM3");
+
     @Override
     public void start(Stage primaryStage) throws IOException{
         client = new Socket("localhost",9999);
@@ -180,8 +182,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Comunicacion Arduino-Java
+     */
     public void comm() {
-        SerialPort puerto = new SerialPort("COM3");
         try {
             puerto.openPort();
             System.out.println("Arduino conectado.");
@@ -189,10 +193,23 @@ public class Main extends Application {
             puerto.addEventListener((SerialPortEvent event) -> {
                 if (event.isRXCHAR()) {
                     System.out.println("Se ha realizado un disparo!");
+                    try {
+                        send("B");
+                    } catch (SerialPortException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
         } catch (SerialPortException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Comunicacion Java-Arduino
+     * @param msg mensage que se envia de java a arduino
+     */
+    private void send(String msg) throws SerialPortException {
+        puerto.writeString(msg);
     }
 }
