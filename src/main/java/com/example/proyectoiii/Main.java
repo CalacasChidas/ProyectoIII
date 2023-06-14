@@ -100,6 +100,7 @@ public class Main extends Application {
     }
     private void openAgregar(Stage primaryStage) {
         try {
+            comm();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("agregarView.fxml"));
             Parent root = loader.load();
 
@@ -183,30 +184,11 @@ public class Main extends Application {
         SerialPort puerto = new SerialPort("COM3");
         try {
             puerto.openPort();
-            System.out.println("com");
+            System.out.println("Arduino conectado.");
             puerto.setParams(SerialPort.BAUDRATE_19200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             puerto.addEventListener((SerialPortEvent event) -> {
                 if (event.isRXCHAR()) {
-                    try {
-                        String x = puerto.readString();
-                        if (x.equals("X")) {
-                            System.out.println("SH");
-                        }
-                        if (x.equals("U")) {
-                            System.out.println("UP");
-                        }
-                        if (x.equals("D")) {
-                            System.out.println("DOWN");
-                        }
-                        if (x.equals("L")) {
-                            System.out.println("LEFT");
-                        }
-                        if (x.equals("R")) {
-                            System.out.println("RIGHT");
-                        }
-                    } catch (SerialPortException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("Se ha realizado un disparo!");
                 }
             });
         } catch (SerialPortException e) {

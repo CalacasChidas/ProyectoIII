@@ -4,11 +4,11 @@ const int pin_led3 = 4;
 const int pin_led4 = 5;
 const int pin_led5 = 6;
 const int pin_boton1 = 7;
-const int pin_boton2 = 8;
-const int pin_boton3 = 9;
-const int pin_boton4 = 10;
-const int pin_boton5 = 11;
-const int BUZZER = 12;
+const int pin_boton2 = 9;
+const int pin_boton3 = 10;
+const int pin_boton4 = 11;
+const int pin_boton5 = 12;
+const int BUZZER = 8;
 const int led_delay = 100;
 const int led_on_duration = 2000;
 
@@ -31,7 +31,7 @@ void setup() {
 void loop() {
   lights();
   checkButton();
-
+/*
   int estado_boton2;
   estado_boton2 = digitalRead(pin_boton2);
   if(estado_boton2 == HIGH){
@@ -55,7 +55,7 @@ void loop() {
   if(estado_boton5 == HIGH){
       Serial.println("R");
       delay(500);
-  }
+  }*/
 }
 
 void lights() {
@@ -96,8 +96,9 @@ void checkButton() {
   if (shoot) {
     digitalWrite(led, HIGH);
     if (led == 4) {
+      delay(50);
       Serial.println("X");
-      delay(4000);
+      delay(2000);
       tone(BUZZER, 1000, 100);
       delay(200);
       tone(BUZZER, 1000, 100);

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import jssc.*;
-
 public class Controller {
 
     private static final int WIDTH = 800;
@@ -22,15 +20,6 @@ public class Controller {
     public static List<Edge> edges;
     private static List<Node> aeropuertoNodes;
     private static List<Node> portaavionesNodes;
-
-
-    @FXML
-    public void initialize() {
-    }
-
-    public Controller() {
-        this.initialize();
-    }
 
     /**
      * Genera la cantidad de nodos aleatorios entres 5 y 10, y en una posicion aleatoria de la ventana.
@@ -96,39 +85,4 @@ public class Controller {
             pane.getChildren().add(circle);
         }
     }
-
-    /*public void comm() {
-        SerialPort puerto = new SerialPort("COM3");
-        try {
-            puerto.openPort();
-            System.out.println("com");
-            puerto.setParams(SerialPort.BAUDRATE_19200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-            puerto.addEventListener((SerialPortEvent event) -> {
-                if (event.isRXCHAR()) {
-                    try {
-                        String x = puerto.readString();
-                        if (x.equals("X")) {
-                            System.out.println("SH");
-                        }
-                        if (x.equals("U")) {
-                            System.out.println("UP");
-                        }
-                        if (x.equals("D")) {
-                            System.out.println("DOWN");
-                        }
-                        if (x.equals("L")) {
-                            System.out.println("LEFT");
-                        }
-                        if (x.equals("R")) {
-                            System.out.println("RIGHT");
-                        }
-                    } catch (SerialPortException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        } catch (SerialPortException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 }
