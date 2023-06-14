@@ -1,5 +1,8 @@
 package com.example.proyectoiii;
 
+/**
+ * Clase node
+ */
 public class Node {
     private int id;
     private int x;
@@ -13,6 +16,10 @@ public class Node {
         this.type = type;
     }
 
+    /**
+     * Getters y Setters
+     * @return
+     */
     public int getId() {
         return id;
     }

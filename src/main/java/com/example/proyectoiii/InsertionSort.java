@@ -1,7 +1,8 @@
 package com.example.proyectoiii;
-
+/**
+ * Clase con el algoritmo de insertion sort
+ */
 public class InsertionSort {
-
     /*static void insertionSort(int[] list) {
         for (int i = 1; i < list.length; i++) {
 

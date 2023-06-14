@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Clase controller principal
+ */
 public class Controller {
 
     private static final int WIDTH = 800;
@@ -60,7 +63,10 @@ public class Controller {
         }
     }
 
-
+    /**
+     * Dibuja el grafo creado
+     * @param pane
+     */
     static void drawGraph(Pane pane) {
         pane.getChildren().clear();
 

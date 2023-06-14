@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="405.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoiii.agregarController">
+   <children>
+      <ChoiceBox fx:id="ordenarPor" layoutX="241.0" layoutY="89.0" prefHeight="15.0" prefWidth="147.0" />
+      <ChoiceBox fx:id="tipos" layoutX="27.0" layoutY="89.0" prefWidth="150.0" />
+      <Label layoutX="27.0" layoutY="55.0" text="Tipos de aviones">
+         <font>
+            <Font name="Bodoni MT" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="241.0" layoutY="60.0" text="Ordenar por:">
+         <font>
+            <Font name="Bodoni MT" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="178.0" text="Velocidad:">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="224.0" text="Eficiencia:">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="275.0" text="Fortaleza:">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="agregarButton" layoutX="169.0" layoutY="337.0" mnemonicParsing="false" onAction="#cargarAvion" text="Agregar">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="velocidadLabel" layoutX="131.0" layoutY="178.0" prefHeight="17.0" prefWidth="62.0">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="eficienciaLabel" layoutX="131.0" layoutY="224.0" prefHeight="17.0" prefWidth="51.0">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="fortalezaLabel" layoutX="131.0" layoutY="275.0" prefHeight="17.0" prefWidth="51.0">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="ordenarButton" layoutX="281.0" layoutY="129.0" mnemonicParsing="false" onAction="#ordenar" text="Ordenar">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="infoButton" layoutX="71.0" layoutY="129.0" mnemonicParsing="false" onAction="#showInfo" text="Info">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="labelOrdenar" layoutX="241.0" layoutY="178.0" prefHeight="17.0" prefWidth="147.0">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="ord1" layoutX="241.0" layoutY="207.0" prefHeight="17.0" prefWidth="152.0">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="ord2" layoutX="241.0" layoutY="237.0" prefHeight="17.0" prefWidth="152.0">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="ord3" layoutX="241.0" layoutY="267.0" prefHeight="17.0" prefWidth="150.0">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

@@ -28,6 +28,9 @@ import java.util.TimerTask;
 import static com.example.proyectoiii.Controller.drawGraph;
 import static com.example.proyectoiii.Controller.generateGraph;
 
+/**
+ * Clase main donde se inicializa todo el código
+ */
 public class Main extends Application {
     static BufferedReader in;
     static PrintWriter out;

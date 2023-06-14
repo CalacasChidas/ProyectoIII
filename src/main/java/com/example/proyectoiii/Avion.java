@@ -1,5 +1,8 @@
 package com.example.proyectoiii;
 
+/**
+ * Clase avión
+ */
 public class Avion {
     private String nombre;
     private double velocidad;
@@ -13,6 +16,10 @@ public class Avion {
         this.fortaleza = fortaleza;
     }
 
+    /**
+     * Getters y setters necesarios
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }

@@ -2,6 +2,9 @@ package com.example.proyectoiii;
 
 import java.util.*;
 
+/**
+ * Clase con el algoritmo de Dijkstra
+ */
 public class Dijkstra {
     private int V; // Número de vértices en el grafo
     private List<List<Edge>> adjList; // Lista de adyacencia del grafo

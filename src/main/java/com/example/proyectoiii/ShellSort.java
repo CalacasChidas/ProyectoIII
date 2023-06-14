@@ -1,7 +1,8 @@
 package com.example.proyectoiii;
-
+/**
+ * Clase con el algoritmo de Shell Sort
+ */
 public class ShellSort {
-
     /*public static void shellSort(int[] arr) {
         int n = arr.length;
         int gap = n / 2;

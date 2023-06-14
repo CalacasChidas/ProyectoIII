@@ -2,6 +2,9 @@ package com.example.proyectoiii;
 
 import javafx.scene.shape.Shape;
 
+/**
+ * Clase edge
+ */
 public class Edge {
     private Node startNode;
     private Node endNode;
@@ -13,6 +16,10 @@ public class Edge {
         this.weight = weight;
     }
 
+    /**
+     * Setters y Getters necesarios
+     * @return
+     */
     public Node getStartNode() {
         return startNode;
     }

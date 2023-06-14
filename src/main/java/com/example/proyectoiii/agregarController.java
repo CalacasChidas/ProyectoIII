@@ -25,8 +25,10 @@ import static com.example.proyectoiii.InsertionSort.insertionSort;
 import static com.example.proyectoiii.Main.root;
 import static com.example.proyectoiii.ShellSort.shellSort;
 
+/**
+ * Clase controller para la ventana de agregar Aviones
+ */
 public class agregarController {
-
     @FXML
     private ChoiceBox<String> tipos;
     @FXML
@@ -42,12 +44,19 @@ public class agregarController {
     @FXML
     private Label ord1, ord2, ord3;
     private ImageView avionImage;
+    /**
+     * Creación de listas y otros objetos necesarios
+     */
 
     Avion[] avionesList = new Avion[3];
     List<String> tiposAviones = new ArrayList<>();
 
     InsertionSort insertionSort = new InsertionSort();
     ShellSort shellSort = new ShellSort();
+
+    /**
+     * Función para cargar los tipos de aviones
+     */
 
     public void loadItems() {
         tiposAviones.add("F18 SuperHornett");
@@ -60,6 +69,9 @@ public class agregarController {
         avionesList[2] = new Avion("C130H Hercules", 5, 5, 10);
     }
 
+    /**
+     * Función para seleccionar la manera en que se desea ordenar los aviones
+     */
     public void ordenar() {
         String av1 = "";
         String av2 = "";
@@ -124,6 +136,9 @@ public class agregarController {
         }
     }
 
+    /**
+     * Función para mostrar la información de un avión seleccionado
+     */
     public void showInfo() {
         if (tipos.getValue() != null) {
             for (int i = 0; i < avionesList.length; i++) {
@@ -137,6 +152,9 @@ public class agregarController {
         }
     }
 
+    /**
+     * Función para cargar un avión en el mapa
+     */
     public void cargarAvion() {
         Image img = new Image("/avi.png");
         avionImage = new ImageView(img);
@@ -160,6 +178,10 @@ public class agregarController {
         }
     }
 
+    /**
+     * Función para animar un avión
+     * @param startNode
+     */
     public void animarAvion(Node startNode) {
         if (!nodes.isEmpty()) {
             List<Node> neighbors = getNeighbors(startNode);
@@ -185,6 +207,11 @@ public class agregarController {
         }
     }
 
+    /**
+     * Función para obtener los vecinos de un nodo
+     * @param node
+     * @return
+     */
     public List<Node> getNeighbors(Node node) {
         List<Node> neighbors = new ArrayList<>();
 
